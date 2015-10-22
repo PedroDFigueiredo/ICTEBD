@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+		<title>Login</title>
+	</h:head>
+	<h:body> 
+		<div class="container">
+		<ui:include src="header.xhtml" />
+			<h:form style="height:500px;">
+				<h:panelGrid coluns="3" class="login">
+	
+				<h:outputLabel value="Matricula" class="label"/>
+				<h:inputText value="#{logBean.registration}" required="true" requiredMessage="Favor preencher o campo matricula" id="login"/>
+				<h:message for="matricula" class="error_message"/>
+	
+				<h:outputLabel value="Password" class="label"/>
+				<h:inputSecret value="#{logBean.pass}" required="true" requiredMessage="Favor preencher o campo senha" id="senha"/>
+				<h:message for="password" class="error_message"/>
+	
+				<h:commandButton value="login" action="#{logBean.action}"/>
+				</h:panelGrid>			
+			</h:form>
+			<ui:include src="footer.xhtml" />
+		</div>
+			
+	</h:body> 
+	<script type="text/javascript">
+	</script>
+</html>

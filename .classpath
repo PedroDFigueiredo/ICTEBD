@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0.61">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/Pedro Diniz/Dropbox/PedroWorkspace/tomcat/apache-tomcat-7.0.61/lib/tomcat-coyote.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/myCompilerTester"/>
+	<classpathentry kind="var" path="JUNIT_HOME"/>
+	<classpathentry kind="var" path="MyCompiler"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

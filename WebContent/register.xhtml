@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	</h:head>
+	<h:body> 
+	<div class="container">
+		<h:form style="height:500px;margin-top:100px;">
+			<h:panelGrid coluns="3">
+
+			<h:outputLabel value="Username" class="label"/>
+			<h:inputText class="" value="#{register.user.name}" required="true" requiredMessage="Favor preencher o campo id" id="username"/>
+			<h:message for="username" class="error_message"/>
+			
+			<h:selectOneMenu value="#{register.user.type}">
+			  	<f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+        		<f:selectItems value="#{register.types}" />						
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="Email" class="label"/>
+			<h:inputText value="#{register.user.email}" required="true" requiredMessage="Favor preencher o campo email" id="email"/>
+			<h:message for="username" class="error_message"/>
+			
+			<h:outputLabel value="Registration" class="label"/>
+			<h:inputText value="#{register.user.registration}" required="true" requiredMessage="Favor preencher o campo matricula" id="registration"/>
+			<h:message for="username" class="error_message"/>
+			
+			<h:outputLabel value="Password" class="label"/>
+			<h:inputSecret value="#{register.user.pass}" required="true" requiredMessage="Favor preencher o campo senha" id="pass"/>
+			<h:message for="username" class="error_message"/>
+
+			<h:commandButton value="register" action="#{register.save(register.user)}" />
+			
+			</h:panelGrid>			
+		</h:form>
+		<ui:include src="footer.xhtml" />
+		</div>
+			
+	</h:body> 
+	<script type="text/javascript">
+	</script>
+</html>

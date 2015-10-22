@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+		<title>Index</title>
+	</h:head>
+	<h:body>
+		<div class="index_container">
+			<div class="index left" >
+				<div class="inside right">
+					<div id="title"></div>
+				</div>
+			</div>
+			<div class="index right" >
+				<div class="inside">
+					<div><h:outputLink rendered="#{bean1.name == null}" value="login.xhtml">Login</h:outputLink></div>
+					<div><h:outputLink value="register.xhtml">Register</h:outputLink></div>
+					<div><h:outputLink rendered="#{bean1.name != null}" value="logout.xhtml">Logout</h:outputLink></div>
+				</div>
+			</div>
+			
+		</div>
+		<ui:include src="footer.xhtml" />
+	</h:body> 
+	<script src='resources/jquery/jquery-2.1.1.min.js' type="text/javascript"></script>
+	<style>
+		footer{
+   			margin-right: 30px;
+	    	margin-top: 30px;
+		}
+	</style>
+	<script type="text/javascript">
+	
+	var typingTimer;                //timer identifier
+	var doneTypingInterval = 3000;  //time in ms
+	var titleVet = ["Compile", "Execute", "Compare"];
+	var count =0;
+	window.onload = function(){
+			$("#title").fadeIn("slow");
+	    	startTimer();
+	};
+		
+	function startTimer(){
+		console.log("start");
+		
+		clearTimeout(typingTimer);
+	    typingTimer = setTimeout(changeTitle, doneTypingInterval);
+	}
+
+	//user is "finished typing," do something
+	function changeTitle() {
+		$("#title").fadeOut("slow");
+		console.log((count%3)+" "+count);
+		console.log("change");
+		$("#title").html(titleVet[count%3]);
+		$("#title").fadeIn("slow");
+		
+		count++;
+		startTimer();
+	}
+	</script>
+</html>

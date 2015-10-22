@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	</h:head>
+	<h:body> 
+	<title>Student</title>
+		<h:outputScript name="readFile.js" library="js"/>
+		<h:outputScript name="jquery-2.1.1.min.js" library="jquery"/>
+
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+	<div class="container">
+		<ui:include src="header.xhtml" />
+		
+		<h:form id="form" class="form" enctype="multipart/form-data">
+			<input type="button" onclick="changeBtnFile()" value="Upload" style="margin-right: 36px;"/>
+		 	<h:inputHidden id="interfaceFileName" value="#{studentBean.fileName}" />
+		  	<h:inputFile id="partFile" value="#{studentBean.partFile}"  onchange="delegateFileSelect(1)" /> 
+		  	<h:commandButton value="execute"
+		      	action="#{studentBean.upload}" />
+		    	<div class="codeArea" id="codeArea"> 
+		    <textarea class="codeLines left" id="codeLines" spellcheck="false"></textarea>
+		   <h:inputTextarea spellcheck="false" class="codeText right" id="codeText" value="#{studentBean.inputCode}" onkeyup="showLines(this.value)"></h:inputTextarea>
+		    </div>
+		</h:form>
+		<h:form id='form1'>
+		<h:dataTable value="#{studentBean.teachers}" var="teacher" class="tabela">
+			<h:column> 
+				<f:facet name="header"> Nome </f:facet> 
+				<div id="Div#{teacher.name}" onclick="submitTeacher('#{teacher.name}')" style="width:100%;">#{teacher.name}</div>
+				<div id="Exer#{teacher.name}" hidden="true">
+					<h:dataTable value="#{studentBean.exercices}" var="exercise" class="tabela">
+						<div>#{exercise.name}</div>
+					</h:dataTable>
+				</div>
+			</h:column>
+		</h:dataTable>
+		</h:form>
+		<ui:include src="footer.xhtml" />
+	</div>
+	</h:body> 
+	<script type="text/javascript">
+		window.onload = function(){
+			$("#form")[0][3].hidden = true;
+			$("#form")[0][4].hidden = true;
+		}
+
+		function showLines(value){
+		    var count ="";
+		    var lines = value.split('\n');
+		    for (i in lines) {
+		    	count += i+"\n";
+		    }
+		    $("#form")[0][5].value = count == "0\n" ? "" : count;	
+		}
+		function changeBtnFile(){
+			$("#form")[0][4].hidden = false;
+			$("#form")[0][3].click();
+		}
+		function submitTeacher(value){
+			console.log(value);
+			$("#Exer"+value).show();
+		}			
+	</script>
+</html>
